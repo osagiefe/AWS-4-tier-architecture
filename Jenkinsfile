@@ -5,7 +5,7 @@ pipeline{
             steps {
                 script {
  
-                    git branch: 'main', url: 'https://github.com/osagiefe/githubactions-aws-ec2-terraform-ansible-jenkins.git' 
+                    git branch: 'main', url: 'https://github.com/osagiefe/AWS-4-tier-architecture.git' 
                 }
             }
 
@@ -15,7 +15,7 @@ pipeline{
                 script{
                     sh 'printenv'
                     sh 'git version'
-                    sh 'docker build . -t osagiefe/imag5.0' 
+                    sh 'docker build . -t osagiefe/image7.0' 
                
             
                 }
@@ -27,7 +27,7 @@ pipeline{
                     withCredentials([string(credentialsId: 'DockerID', variable: 'DockerID')]) {
                         sh 'docker login -u osagiefe -p ${DockerID}'
                    }
-                   sh 'docker push osagiefe/imag5.0:latest'
+                   sh 'docker push osagiefe/imag7.0:latest'
             }
             }
         }
