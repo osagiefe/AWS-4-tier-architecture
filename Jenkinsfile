@@ -15,7 +15,7 @@ pipeline{
                 script{
                     sh 'printenv'
                     sh 'git version'
-                    sh 'docker build . -t osagiefe/image7.0' 
+                    sh 'docker build . -t osagiefe/image8.0' 
                
             
                 }
@@ -27,7 +27,7 @@ pipeline{
                     withCredentials([string(credentialsId: 'DockerID', variable: 'DockerID')]) {
                         sh 'docker login -u osagiefe -p ${DockerID}'
                    }
-                   sh 'docker push osagiefe/imag7.0:latest'
+                   sh 'docker push osagiefe/image8.0:latest'
             }
             }
         }
