@@ -24,3 +24,10 @@ docker login
 
 # To push docker images to docker hub
  docker push <osagiefe/1docker>:latest
+
+ # Ansible commands
+  ## Test connectivity from controller 
+  ansible -i inventory all -m ping
+
+## installing playbook command
+ansible-playbook -i inventory <playbookname>

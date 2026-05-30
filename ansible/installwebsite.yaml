@@ -1,0 +1,80 @@
+---
+- name: Install and deploy website
+  hosts: webapp
+  become: true
+
+  tasks:
+    - name: Update apt cache
+      ansible.builtin.apt:
+        update_cache: yes
+        cache_valid_time: 3600
+
+    - name: Install required packages
+      ansible.builtin.apt:
+        name:
+          - apache2
+          - unzip
+          - wget
+        state: present
+
+    - name: Stop apache before deployment
+      ansible.builtin.service:
+        name: apache2
+        state: stopped
+
+    - name: Remove existing website content
+      ansible.builtin.file:
+        path: /var/www/html
+        state: absent
+
+    - name: Recreate web root directory
+      ansible.builtin.file:
+        path: /var/www/html
+        state: directory
+        owner: www-data
+        group: www-data
+        mode: "0755"
+
+    - name: Download website archive from GitHub
+      ansible.builtin.get_url:
+        url: https://github.com/azeezsalu/jupiter/archive/refs/heads/main.zip
+        dest: /tmp/jupiter-main.zip
+        mode: "0644"
+
+    - name: Extract website archive
+      ansible.builtin.unarchive:
+        src: /tmp/jupiter-main.zip
+        dest: /tmp
+        remote_src: yes
+
+    - name: Copy website files into Apache web root
+      ansible.builtin.copy:
+        src: /tmp/jupiter-main/
+        dest: /var/www/html/
+        remote_src: yes
+        owner: www-data
+        group: www-data
+        mode: preserve
+
+    - name: Ensure correct ownership on web root
+      ansible.builtin.file:
+        path: /var/www/html
+        owner: www-data
+        group: www-data
+        recurse: yes
+
+    - name: Start and enable apache
+      ansible.builtin.service:
+        name: apache2
+        state: started
+        enabled: yes
+
+    - name: Clean up downloaded archive
+      ansible.builtin.file:
+        path: /tmp/jupiter-main.zip
+        state: absent
+
+    - name: Clean up extracted folder
+      ansible.builtin.file:
+        path: /tmp/jupiter-main
+        state: absent
