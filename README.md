@@ -1,5 +1,12 @@
 # AWS-4-tier-architecture
-In this project I will be provisioning 4 public subnet in separate AV zones. Each with EC2 instances using tools as Terrform to provision AWS EC2 instances, Deploy install Ansible shell script to install controller, Deploy apache2 shell script, Ansible playbook to deploy Jensins, Github repo, Jenkins CICD to build Docker image and push to dockerhub. Finally, deploy a web application to subnet 4 using Ansible playbook
+In this project I will be provisioning 4 public subnet in separate AV zones. Each with EC2 instances using the following tools:
+- Terraform to provision AWS EC2 instances.
+- Deploy Ansible shell script - to install Ansible Controller
+- Deploy apache2 shell script - to install apache2
+- Ansible playbook to deploy Jensins
+- Github repo
+- Jenkins CICD to build Docker image and push to dockerhub.
+- Deploy a web application to subnet 4 using Ansible playbook
 
 # Tools 
 
@@ -13,6 +20,7 @@ In this project I will be provisioning 4 public subnet in separate AV zones. Eac
 - Jenkins pipeline
 
 # Steps:
+
 ## Provision Infrastructure
 <img width="1521" height="714" alt="Image" src="https://github.com/user-attachments/assets/308b42f2-dbb3-482b-b6db-6f2df5a90cb7" />
 
@@ -60,7 +68,7 @@ In this project I will be provisioning 4 public subnet in separate AV zones. Eac
 
  # Project Challenges
  - Ansible controller and apache2 scripts did not deploy during ec2 build
- - I had issue with deploying it specificially to respective ec2 instance
+ - I had issue with deploying it specificially to respective ec2 instances 
 
  # Solution
  - I used ChaptGPT to troubleshoot and sought for solutions; and my code and files were executed sucessfully
