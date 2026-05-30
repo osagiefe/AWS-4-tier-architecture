@@ -49,5 +49,18 @@ In this project I will be provisioning 4 public subnet in separate AV zones. Eac
  - Synchronize vscode with Github
  - Execute Jenkins pipeline
  <img width="1617" height="890" alt="Image" src="https://github.com/user-attachments/assets/03c76579-471c-45ef-a681-f5408ed99e19" />
- 
- 
+
+ # Use Ansible controller to deploy webapplication
+ <img width="1338" height="794" alt="Image" src="https://github.com/user-attachments/assets/9f08b41b-a536-4d35-a2ae-974d5da57ec5" />
+
+ # Deployed webapplication and apache2 server
+ <img width="1368" height="839" alt="Image" src="https://github.com/user-attachments/assets/5273b3fc-33e8-4f87-9755-5f0db018b9f9" />
+
+ <img width="835" height="709" alt="Image" src="https://github.com/user-attachments/assets/34a262db-c08a-4bb6-bb25-aa2dc0d188a2" />
+
+ # Project Challenges
+ - Ansible controller and apache2 scripts did not deploy during ec2 build
+ - I had issue with deploying it specificially to respective ec2 instance
+
+ # Solution
+ - I used ChaptGPT to troubleshoot and sought for solutions; and my code and files were executed sucessfully
